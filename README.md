@@ -37,6 +37,10 @@ the dashboard injects callbacks that hit the dashboard endpoint (no 127.0.0.1 lo
 
 mitmdump runs as a subprocess for full mitmproxy capabilities — keep it local unless you intentionally proxy remote traffic.
 
+To use callbacks (collab)
+
+`http://yourvpsip:port/callback`
+
 logs live in logs/ (requests.log, injected.json, callbacks.json).
 
 
