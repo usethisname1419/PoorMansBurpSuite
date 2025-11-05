@@ -6,6 +6,7 @@ this will be a long-term development project. it runs on a vps and does stuff (p
 
 ![poormansburp dashboard](Screenshot%202025-11-05%20161209.png)
 ![poormansburp dashboard](Screenshot%202025-11-05%20161609.png)
+![poormansburp dashboard](Screenshot%202025-11-05%20161732.png)
 
 
 ## what it is 
