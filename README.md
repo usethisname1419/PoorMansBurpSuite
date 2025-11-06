@@ -4,9 +4,9 @@ i’m building a replacement for burpsuite.
 
 this will be a long-term development project. it runs on a vps and does stuff (proxy + dashboard + callback + mitmdump integration). if you want to help with the project send me a telegram message: @usethisusername
 
-![poormansburp dashboard](Screenshot%202025-11-05%20161209.png)
-![poormansburp dashboard](Screenshot%202025-11-05%20161609.png)
-![poormansburp dashboard](Screenshot%202025-11-05%20161732.png)
+![poormansburp dashboard](Screenshot%202025-11-165004.png)
+![poormansburp dashboard](Screenshot%202025-11-165016.png)
+![poormansburp dashboard](Screenshot%202025-11-165130.png)
 
 
 ## what it is 
