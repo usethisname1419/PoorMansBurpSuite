@@ -89,7 +89,7 @@ port in use → sudo ss -lntp | grep :5005 then kill conflicting process
 
 iframe injections not triggering → mixed content (HTTPS target, HTTP callback) — run dashboard under HTTPS or test HTTP pages
 
-If you don't have a VPS you can use tunnels like serveo, ngrok, zrok
+If you don't have a VPS you can use tunnels like serveo, ngrok, zrok - Do not open and forward ports to your local device to use this tool!
 
 ## Issues
 
