@@ -73,6 +73,8 @@ for blind DNS/HTTP testing use Interactsh or Burp Collaborator
 
 only use this tool against targets you own or are authorized to test. unauthorized testing is illegal.
 
+This is in development, don't go test strange sites because there could be security risk!!
+
 
 ## help / contribute
 
@@ -90,6 +92,8 @@ iframe injections not triggering → mixed content (HTTPS target, HTTP callback)
 ## Issues
 
 The interceptor is fairly buggy, sometimes it works
+
+Security Issues
 
 ## Supoort
 
