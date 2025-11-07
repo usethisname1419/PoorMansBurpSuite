@@ -87,6 +87,9 @@ port in use → sudo ss -lntp | grep :5005 then kill conflicting process
 
 iframe injections not triggering → mixed content (HTTPS target, HTTP callback) — run dashboard under HTTPS or test HTTP pages
 
+## Issues
+
+The interceptor is fairly buggy, sometimes it works
 
 ## Supoort
 
