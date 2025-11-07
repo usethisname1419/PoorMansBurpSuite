@@ -50,17 +50,22 @@ def run_subprocess_stream(cmd, name_prefix=None):
     t.start()
     return p
 
-def run_mitm(mitm_path, addon_path, mitm_port):
+def run_mitm(mitm_path, addon_path, mitm_port, dashboard_port, callback_port, host="127.0.0.1"):
     mitm_bin = find_executable(mitm_path)
     if mitm_bin is None:
-        print(f"[launcher] mitmdump not found at '{mitm_path}' and not on PATH. Install mitmproxy or set --mitm-path.")
+        print(f"[launcher] mitmdump not found at '{mitm_path}'.")
         return None
     if not Path(addon_path).exists():
         print(f"[launcher] expected addon '{addon_path}' not found.")
         return None
-    cmd = [mitm_bin, "-s", str(addon_path), "-p", str(mitm_port)]
+    cmd = [
+        mitm_bin, "-s", str(addon_path), "-p", str(mitm_port),
+        "--set", f"pmb_dashboard_url=http://{host}:{dashboard_port}",
+        "--set", f"pmb_callback_base=http://{host}:{callback_port}/callback",
+    ]
     print(f"[launcher] launching mitmdump: {' '.join(cmd)}")
     return run_subprocess_stream(cmd, name_prefix="mitmdump")
+
 
 def run_flask_in_thread(module_path, attr_name="app", host="0.0.0.0", port=5000):
     """
@@ -105,7 +110,8 @@ def parse_args():
 
 def main():
     args = parse_args()
-
+    if args.proxy:
+        os.environ["PMB_MITM_PROXY"] = f"http://127.0.0.1:{args.mitm_port}"
     children = []   # subprocesses (mitmdump)
     threads = []    # in-process threads (Flask apps)
 
@@ -158,9 +164,9 @@ def main():
     # Start mitmdump as a subprocess (if requested)
     if args.proxy:
         addon = ROOT / "core" / "proxy.py"
-        p = run_mitm(args.mitm_path, addon, args.mitm_port)
-        if p:
-            children.append(p)
+        p = run_mitm(args.mitm_path, addon, args.mitm_port, args.dashboard_port, args.callback_port, host="127.0.0.1")
+        if p: children.append(p)
+
 
     # main loop: keep process alive while threads/subprocesses run
     try:
